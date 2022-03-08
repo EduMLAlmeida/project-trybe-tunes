@@ -26,9 +26,11 @@ class Loading extends Component {
     } = this.state;
     return (
       <div>
-        {redirect === false
-          ? <p>Carregando...</p>
-          : <Redirect to="/search" />}
+        {
+          redirect === false
+            ? <p>Carregando...</p>
+            : <Redirect to="/search" />
+        }
       </div>
     );
   }
