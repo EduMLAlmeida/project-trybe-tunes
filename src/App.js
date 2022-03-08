@@ -15,6 +15,8 @@ class App extends React.Component {
     this.state = {
       name: '',
       isButtonDisabled: true,
+      artist: '',
+      isSearchButtonDisabled: true,
     };
   }
 
@@ -40,10 +42,34 @@ class App extends React.Component {
     this.setState({ name: elementValue }, this.handleButton);
   }
 
+  handleSearchButton = () => {
+    const {
+      artist,
+    } = this.state;
+
+    const minArtistLength = 2;
+
+    if (artist.length >= minArtistLength) {
+      this.setState({ isSearchButtonDisabled: false });
+    } else {
+      this.setState({ isSearchButtonDisabled: true });
+    }
+  }
+
+  onSearchInputChange = (event) => {
+    const {
+      value,
+    } = event.target;
+    const searchElementValue = value;
+    this.setState({ artist: searchElementValue }, this.handleSearchButton);
+  }
+
   render() {
     const {
       name,
       isButtonDisabled,
+      artist,
+      isSearchButtonDisabled,
     } = this.state;
 
     return (
@@ -68,7 +94,17 @@ class App extends React.Component {
               <Loading name={ name } />
             ) }
           />
-          <Route exact path="/search" component={ Search } />
+          <Route
+            exact
+            path="/search"
+            render={ () => (
+              <Search
+                artist={ artist }
+                onSearchInputChange={ this.onSearchInputChange }
+                isSearchButtonDisabled={ isSearchButtonDisabled }
+              />
+            ) }
+          />
           <Route exact path="/album/:id" component={ Album } />
           <Route exact path="/favorites" component={ Favorites } />
           <Route exact path="/profile" component={ Profile } />

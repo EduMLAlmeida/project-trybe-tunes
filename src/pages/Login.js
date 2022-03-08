@@ -20,7 +20,7 @@ class Login extends Component {
       <div data-testid="page-login">
         <form>
           <label htmlFor="name">
-            Nome
+            Nome:
             <input
               name="name"
               type="text"
