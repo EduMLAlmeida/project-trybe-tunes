@@ -35,7 +35,7 @@ class SearchContent extends Component {
       isTestResultsEnabled,
     } = this.state;
     return (
-      <div data-testid="page-search">
+      <div>
         <FormSearch
           artist={ artist }
           onSearchInputChange={ onSearchInputChange }

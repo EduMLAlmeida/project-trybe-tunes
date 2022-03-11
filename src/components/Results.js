@@ -17,19 +17,13 @@ class Results extends Component {
           { artistInputValue }
         </p>
         {searchResult.map((element, index) => (
-          <div key={ index }>
-            {/* <p>
-              Album Name:
-              {' '}
-              {element.collectionName}
-            </p> */}
-            <Link
-              to={ `/album/${element.collectionId}` }
-              data-testid={ `link-to-album-${element.collectionId}` }
-            >
-              {`${element.collectionName}`}
-            </Link>
-          </div>
+          <Link
+            to={ `/album/${element.collectionId}` }
+            data-testid={ `link-to-album-${element.collectionId}` }
+            key={ index }
+          >
+            {`${element.collectionName}`}
+          </Link>
         ))}
       </div>
     );
