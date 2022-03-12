@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import SearchLoading from '../components/SearchLoading';
 import SearchContent from '../components/SearchContent';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
@@ -24,15 +23,11 @@ class Search extends Component {
     const requestedArtist = artist;
     this.setState({ artistInputValue: requestedArtist });
     this.setState({ artist: '' });
-    // desativar search content
     this.setState({ isSearchContentEnabled: false });
-    // ativar mensagem de loading
     this.setState({ isSearchLoadingEnabled: true });
     const artistResponse = await searchAlbumsAPI(requestedArtist);
     this.setState({ searchResult: artistResponse });
-    // desativar mensagem de loading
     this.setState({ isSearchLoadingEnabled: false });
-    // ativar search content
     this.setState({ isSearchContentEnabled: true });
   };
 
@@ -80,7 +75,7 @@ class Search extends Component {
           />
         }
         {
-          isSearchLoadingEnabled && <SearchLoading />
+          isSearchLoadingEnabled && <p>Carregando...</p>
         }
       </div>
     );

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Results from './Results';
-import ResultsEmpty from './ResultsEmpty';
 
 class TestResults extends Component {
   constructor() {
@@ -42,7 +41,7 @@ class TestResults extends Component {
           />
         }
         {
-          isResultsEmptyEnabled && <ResultsEmpty />
+          isResultsEmptyEnabled && <p>Nenhum álbum foi encontrado</p>
         }
       </div>
     );
